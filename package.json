@@ -1,0 +1,20 @@
+{
+    "name": "mern_course",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon app.js"
+    },
+    "keywords": [
+        "mern"
+    ],
+    "author": "vlabser",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^6.2.0",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.7"
+    }
+}
