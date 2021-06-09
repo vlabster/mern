@@ -2,5 +2,6 @@
     "port": 5000,
     "mongo_url": "mongodb+srv://vlabster:Qqw123@clustermern.cxrph.mongodb.net/app",
     "mongo_username": "vlabster",
-    "mongo_password": "Qqw123"
+    "mongo_password": "Qqw123",
+    "jwt_secret": "QE9bE6MT7RNEtEO,btfcsxmw^R)--"
 }
