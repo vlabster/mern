@@ -7,36 +7,28 @@ import { AuthPage } from './pages/AuthPage'
 
 export const useRoutes = isAuth => {
     if (isAuth) {
-        return (
+        return ( 
             <Switch>
-
                 <Route path="/links" exact>
-                    <LinksPage />
+                    <LinksPage/>
                 </Route>
-
                 <Route path="/create" exact>
-                    <CreatePage />
+                    <CreatePage/>
                 </Route>
-
-                <Route path="/detail/:id" exact>
-                    <DetailPage />
+                <Route path="/detail/:id">
+                    <DetailPage/>
                 </Route>
-
-                <Redirect to={"/create"}/>
-
+                <Redirect to = { "/create" }/>
             </Switch>
         )
     }
 
-    return (
+    return ( 
         <Switch>
-
             <Route path="/" exact>
-                <AuthPage />
+                <AuthPage/>
             </Route>
-
-            <Redirect to={"/"} />
-
+            <Redirect to = { "/" }/>
         </Switch>
     )
 }
