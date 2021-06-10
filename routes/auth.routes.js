@@ -14,11 +14,14 @@ router.post(
         check('password', 'Минимальная длинна пароля - 6 символов').isLength({ min: 6 })
     ],
     async(req, res) => {
+
+        console.log('Body:', req.body)
+        
         try {
             //Валидация
             const errors = validationResult(req)
 
-            if (errors.isEmpty()) {
+            if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
                     message: 'Неккоректные данные при регистрации'
