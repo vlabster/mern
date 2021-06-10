@@ -52,7 +52,7 @@ router.post(
 router.post(
     '/login', 
     [
-        check('email', 'Введите корректный email').normalizeEmail().isEmail(),
+        check('email', 'Введите корректный email').isEmail(),
         check('password', 'Введите пароль').exists()
     ],
     async(req, res) => {
@@ -60,10 +60,10 @@ router.post(
             //Валидация
             const errors = validationResult(req)
 
-            if (errors.isEmpty()) {
+            if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Неккоректные данные при регистрации'
+                    message: 'Неккоректные данные при выходе'
                 })
             }
 
