@@ -8,7 +8,7 @@ const shortid = require('shortid')
 router.post('/generate', auth, async (req, res) => {
     try {
 
-        const baseUrl = config.get('baseUrl')
+        const baseUrl = config.get('base_url')
         const { from } = req.body
 
         const code = shortid.generate()
@@ -33,7 +33,7 @@ router.post('/generate', auth, async (req, res) => {
 
     } 
     catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте ещё раз' })
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте ещё раз', error: e.message })
     }
 })
 
