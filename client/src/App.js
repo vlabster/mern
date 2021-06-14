@@ -8,17 +8,25 @@ import { useAuth } from './hooks/auth.hook'
 import { AuthContext } from './context/AuthContext'
 //components
 import { Navbar } from './components/Navbar'
+import { Loader } from './components/Loader'
 //styles
 import 'materialize-css'
 
 
 function App() {
 
-  const { token, userId, login, logout } = useAuth()
+  const { token, login, logout, userId, ready } = useAuth()
   const isAuthenticated = !!token;
 
   const routes = useRoutes(isAuthenticated)
   
+  if (!ready) {
+    return(
+      <Loader>
+
+      </Loader>
+    )
+  }
 
   return (
     <AuthContext.Provider value={{
