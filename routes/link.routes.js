@@ -16,8 +16,11 @@ router.post('/generate', auth, async (req, res) => {
         const existing = await Link.findOne({ from })
 
         if (existing) {
+
+            // if (existing.owner === req.user.userId) {
             res.json({ link: existing })
             return
+            // }
         }
 
         const to = baseUrl + '/t/' + code
@@ -50,6 +53,13 @@ router.get('/', auth, async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
     try {
         const link = await Link.findById(req.params.id) //????
+
+        //Сам добавил, если ссылка чужая = нельзя смотреть статистику (но это может плохо работать если разные пользователи создадут одну и ту же ссылку, щас протестим)
+        // if(link.owner !== req.user.userId) {
+        //     res.status(404).json({ message: 'Ссылка не найдена' })
+        //     return
+        // }
+
         res.json(link)
     } 
     catch (e) {

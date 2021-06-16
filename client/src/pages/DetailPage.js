@@ -31,6 +31,8 @@ export const DetailPage = () => {
         return <Loader/>
     }
 
+    console.log(link)
+
     return (
         <>
         { !loading && link && <LinkCard link={link} /> }
