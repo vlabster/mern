@@ -22,7 +22,7 @@ export const LinksPage = () => {
 
         }
 
-    }, [])
+    }, [token, request])
 
     useEffect(() => {
         fetchLinks()
