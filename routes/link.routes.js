@@ -67,4 +67,23 @@ router.get('/:id', auth, async (req, res) => {
     }
 })
 
+router.delete('/:id', auth, async (req, res) => {
+    try {
+
+        const link = await Link.findById(req.params.id) //????
+
+        if(link.owner !== req.user.userId) {
+            res.status(404).json({ message: 'Ошибка удаления ссылки' })
+            return
+        }
+
+        const deleteLink = await link.deleteOne({id: req.params.id})
+        
+        res.json(link)
+    } 
+    catch (e) {
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте ещё раз' })
+    }
+})
+
 module.exports = router
