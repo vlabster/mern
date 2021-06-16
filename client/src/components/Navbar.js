@@ -7,6 +7,7 @@ export const Navbar = () => {
     const history = useHistory()
 
     const auth = useContext(AuthContext)
+    console.log(auth)
 
     const logoutHandler = event => {
         event.preventDefault()
@@ -17,7 +18,7 @@ export const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper blue darken-1" style={{ padding: '0 2rem' }}>
-            <span className="brand-logo">Сокращение ссылок</span>
+            <span className="brand-logo">Пользователь {auth.userEmail}</span>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><NavLink to="/create">Создать</NavLink></li>
                 <li><NavLink to="/links">Список</NavLink></li>
