@@ -7,7 +7,6 @@ export const Navbar = () => {
     const history = useHistory()
 
     const auth = useContext(AuthContext)
-    console.log(auth)
 
     const logoutHandler = event => {
         event.preventDefault()
