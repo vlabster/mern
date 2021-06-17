@@ -10,7 +10,7 @@ export const LinksPage = () => {
 
     const { loading, request } = useHttp()
 
-    const { token } = useContext(AuthContext)
+    const { token, logout } = useContext(AuthContext)
 
     const fetchLinks = useCallback( async () => {
 
@@ -19,7 +19,9 @@ export const LinksPage = () => {
             setLinks(fetched)
         }
         catch(e) {
-
+            if (e.message === 'Нет авторизации') {
+                logout()
+            }
         }
 
     }, [token, request])

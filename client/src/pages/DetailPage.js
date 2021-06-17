@@ -7,7 +7,7 @@ import { LinkCard } from '../components/LinkCard'
 
 export const DetailPage = () => {
 
-    const { token } = useContext(AuthContext)
+    const { token, logout } = useContext(AuthContext)
     const { request, loading } = useHttp()
     const [link, setLink] = useState(null)
     const linkId = useParams().id
@@ -19,7 +19,9 @@ export const DetailPage = () => {
             setLink(fetched)
         }
         catch(e) {
-
+            if (e.message === 'Нет авторизации') {
+                logout()
+            }
         }
     }, [token, linkId, request])
 
