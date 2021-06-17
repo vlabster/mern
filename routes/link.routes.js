@@ -72,14 +72,15 @@ router.delete('/:id', auth, async (req, res) => {
 
         const link = await Link.findById(req.params.id) //????
 
-        if(link.owner !== req.user.userId) {
-            res.status(404).json({ message: 'Ошибка удаления ссылки' })
+
+        if(link.owner != req.user.userId) {
+            res.status(404).json({ message: 'Ошибка удаления ссылки', owner: link.owner, userId: req.user.userId })
             return
         }
 
         const deleteLink = await link.deleteOne({id: req.params.id})
         
-        res.json(link)
+        res.json(deleteLink)
     } 
     catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте ещё раз' })
