@@ -3,21 +3,20 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {useHttp} from '../hooks/http.hook'
 
-export const LinksList = ({ links }) => {
+export const LinksList = ({ links, deleteLink }) => {
 
-    const { loading, error, request, clearError } = useHttp()
-    const [list, setLinks] = useState([])
+    // const [list, setLinks] = useState([])
 
-    useEffect(() => {
-        setLinks(links)
-    }, [links])
+    // useEffect(() => {
+    //     setLinks(links)
+    // }, [links])
 
-    const deleteLink = (event, id) => {
-        event.preventDefault()
-        setLinks(list.filter(item => item._id !== id))
-    }
+    // const deleteLink = (event, id) => {
+    //     event.preventDefault()
+    //     setLinks(list.filter(item => item._id !== id))
+    // }
 
-    if (!list.length) {
+    if (!links.length) {
         return <p classame="center">Ссылки отсутствуют</p>
     }
 
@@ -34,7 +33,7 @@ export const LinksList = ({ links }) => {
             </thead>
 
             <tbody>
-                { list.map((link, index) => {
+                { links.map((link, index) => {
                     return (
                         <tr key={link._id}>
                             <td>{ index + 1 }</td>
@@ -44,6 +43,7 @@ export const LinksList = ({ links }) => {
                                 <Link to={`/detail/${link._id}`}>Открыть</Link>
                             </td>
                             <td>    
+                            {/* onClick={(e) => {deleteLink(e, link._id, index)}} */}
                                 <a className="waves-effect waves-light btn-small blue" onClick={(e) => {deleteLink(e, link._id, index)}}>Удалить</a>
                                 {/* <a className="waves-effect waves-light btn-small blue" onClick={this.deleteLink.bind(this, link._id, index)}>Удалить</a> */}
                             </td>
