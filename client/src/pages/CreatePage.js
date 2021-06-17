@@ -4,9 +4,7 @@ import { AuthContext } from '../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 
 export const CreatePage = () => {
-
-
-
+    
     const history = useHistory()
 
     const auth = useContext(AuthContext)
